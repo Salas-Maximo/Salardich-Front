@@ -1,0 +1,18 @@
+<h2>Lista de Sanguches</h2>
+<ul>
+  <li *ngFor="let sanguche of sanguches">
+    {{ sanguche.nombre }} - Ingredientes: {{ sanguche.ingredientes.join(', ') }}
+    <button (click)="deleteSanguche(sanguche.id)">Eliminar</button>
+  </li>
+</ul>
+
+<h2>Agregar Sanguche</h2>
+<form (ngSubmit)="addSanguche()">
+  <label for="nombre">Nombre:</label>
+  <input type="text" [(ngModel)]="newSanguche.nombre" name="nombre" required />
+
+  <label for="ingredientes">Ingredientes:</label>
+  <input type="text" [(ngModel)]="newSanguche.ingredientes" name="ingredientes" required />
+
+  <button type="submit">Agregar Sanguche</button>
+</form>
