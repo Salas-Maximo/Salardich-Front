@@ -23,9 +23,11 @@ export class InicioComponent implements OnInit {
 
   
   getSanguches(): void {
+    console.log("getSanguches");
     this.sangucheService.getAllSanguches().subscribe(
       (sanguches) => {
         this.sanguches = sanguches;
+        console.log("sanguches", this.sanguches);
       },
       (error) => {
         console.error('Error loading sanguches', error);
