@@ -1,30 +1,56 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../auth.service';
-import { FormsModule } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.css']
+  styleUrls: ['./auth.component.css'],
 })
 export class AuthComponent {
+  logout() {
+    localStorage.removeItem('token');
+    window.location.reload();
+  }
   user = {
-    id: 0,
     username: '',
     email: '',
     password: '',
-    creaciones: []
+    isAdmin: false,
   };
 
+  isLogin: boolean = false;
+  notLoggedIn: boolean = true;
+
   constructor(private authService: AuthService) {}
+  ngOnInit(): void {
+    if (localStorage.getItem('token')) this.notLoggedIn = false;
+  }
 
   register(): void {
     this.authService.register(this.user).subscribe(
       (response) => {
-        console.log('Usuario registrado:', response);
+        alert('Usuario registrado, inicie sesión');
       },
       (error) => {
         console.error('Error al registrar el usuario:', error);
+      }
+    );
+  }
+
+  login(): void {
+    this.authService.login(this.user).subscribe(
+      (response) => {
+        if (response.token === '') {
+          alert('Contraseña Incorrecta!');
+          return;
+        }
+        console.log('Logeado');
+        // save the token in local storage
+        localStorage.setItem('token', response.token);
+        window.location.reload();
+      },
+      (error) => {
+        console.error('Error al loguear el usuario:', error);
       }
     );
   }

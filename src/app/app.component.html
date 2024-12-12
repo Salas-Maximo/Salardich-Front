@@ -1,2 +1,5 @@
 <app-auth></app-auth>
-<app-inicio></app-inicio>
+<app-sanguche-form (emitSanguche)="createSanguche($event)"></app-sanguche-form>
+<ul *ngFor="let item of sanguches"	>
+  <app-sanguche [sanguche]="item" />
+</ul>

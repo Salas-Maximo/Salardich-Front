@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { InicioComponent } from './inicio/inicio.component';
 import { RouterModule, Routes } from '@angular/router';
+import { SangucheFormComponent } from './sanguche-form/sanguche-form.component';
+import { SangucheComponent } from './sanguche/sanguche.component';
 
 
 const routes: Routes = [
@@ -19,7 +21,9 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     AuthComponent,
-    InicioComponent
+    InicioComponent,
+    SangucheFormComponent,
+    SangucheComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
