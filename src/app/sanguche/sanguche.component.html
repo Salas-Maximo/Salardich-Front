@@ -1,0 +1,14 @@
+<div class="container"*ngIf="!editing" >
+  <h3>{{sanguche.nombre}}</h3>
+  <h5 *ngIf="creatorName"><i>Por: {{creatorName}}</i></h5>
+  <hr />
+  <button (click)="onEdit(sanguche._id)">Editar</button>
+  <button (click)="onDelete(sanguche._id)">Borrar</button>
+  <ul *ngFor="let ingrediente of sanguche.ingredientes">
+    <li>{{ingrediente}}</li>
+  </ul>
+</div>
+<div *ngIf="editing" >
+<app-sanguche-form  (emitSanguche)="updateSanguche($event)"></app-sanguche-form>
+<button (click)="onCancel()">Cancelar</button>
+</div>
