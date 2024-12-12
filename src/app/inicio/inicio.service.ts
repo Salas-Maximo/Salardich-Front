@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface Sanguche {
@@ -9,7 +9,7 @@ export interface Sanguche {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SangucheService {
   private apiUrl = 'http://127.0.0.1:3000/api/sanguches';
