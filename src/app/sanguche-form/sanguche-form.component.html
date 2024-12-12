@@ -1,0 +1,14 @@
+<form (ngSubmit)="sendSanguche()">
+  <div>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" [(ngModel)]="sanguche.nombre" name="nombre" required>
+  </div>
+  <div>
+    <label for="ingredientes">Ingredientes:</label>
+    <br/>
+    <select id="ingredientes" [(ngModel)]="sanguche.ingredientes" name="ingredientes" multiple>
+      <option *ngFor="let ingrediente of availableIngredientes" [value]="ingrediente">{{ ingrediente }}</option>
+    </select>
+  </div>
+  <button type="submit">Enviar sanguche</button>
+</form>
