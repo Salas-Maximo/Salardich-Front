@@ -1,0 +1,11 @@
+.todo{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: -30px;
+    column-gap: 30px;
+}
+
+.todo ul{
+    padding-inline-start: 0px;
+}
