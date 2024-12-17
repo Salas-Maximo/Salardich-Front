@@ -1,7 +1,13 @@
 <app-auth></app-auth>
 <app-sanguche-form (emitSanguche)="createSanguche($event)"></app-sanguche-form>
 <div class="todo">
-<ul *ngFor="let item of sanguches"	>
-  <app-sanguche [sanguche]="item" />
-</ul>
+  <ul *ngFor="let item of paginatedSanguches">
+    <app-sanguche [sanguche]="item"></app-sanguche>
+  </ul>
+
 </div>
+  <div class="pagination-controls">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">←</button>
+    <span>Página {{currentPage}} de {{totalPages}}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">→</button>
+  </div>
